@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizia - Cambio de Divisas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .main-content {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .header-title {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            width: 100%;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        .currency-select {
+            padding: 8px;
+            font-size: 14px;
+        }
+        .stats-container {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .stats-container h2 {
+            margin: 0 0 10px 0;
+        }
+        .stat-item {
+            margin: 10px 0;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            width: 100%;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="C:\Users\clagi\mi-proyecto\imagenes\logo.webp" alt="Logotipo de Optimizia" class="logo">
+            <h1 class="company-name">Optimizia</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://github.com/clagiap/trabajo-final
+                " target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-content">
+        <!-- Contenedor principal de la página -->
+        <div class="container">
+            <div class="header-title">Cambio de Divisas</div>
+            
+            <table id="exchangeTable">
+                <thead>
+                    
+                       <!-- Agrega más opciones según sea necesario -->
+                                </select>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <table>
+            <tr>
+                <th>País</th>
+                <th>Moneda</th>
+                <th>Código</th>
+                <th class="exchange-rate">Tasa de Cambio 
+                    <div class="dropdown">
+                        <select id="currencySelect" class="dropbtn">
+                            <option value="AED">AED</option>
+                            <option value="AFN">AFN</option>
+                            <option value="ALL">ALL</option>
+                            <option value="AMD">AMD</option>
+                            <option value="AOA">AOA</option>
+                            <option value="ARS">ARS</option>
+                            <option value="AUD">AUD</option>
+                            <option value="AZN">AZN</option>
+                            <option value="BAM">BAM</option>
+                            <option value="BBD">BBD</option>
+                            <option value="BDT">BDT</option>
+                            <option value="BGN">BGN</option>
+                            <option value="BHD">BHD</option>
+                            <option value="BIF">BIF</option>
+                            <option value="BND">BND</option>
+                            <option value="BOB">BOB</option>
+                            <option value="BRL">BRL</option>
+                            <option value="BSD">BSD</option>
+                            <option value="BTN">BTN</option>
+                            <option value="BWP">BWP</option>
+                            <option value="BYN">BYN</option>
+                            <option value="BZD">BZD</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CDF">CDF</option>
+                            <option value="CHF">CHF</option>
+                            <option value="CLP">CLP</option>
+                            <option value="CNY">CNY</option>
+                            <option value="COP">COP</option>
+                            <option value="CRC">CRC</option>
+                            <option value="CUP">CUP</option>
+                            <option value="CVE">CVE</option>
+                            <option value="CZK">CZK</option>
+                            <option value="DJF">DJF</option>
+                            <option value="DKK">DKK</option>
+                            <option value="DOP">DOP</option>
+                            <option value="DZD">DZD</option>
+                            <option value="EGP">EGP</option>
+                            <option value="ERN">ERN</option>
+                            <option value="ETB">ETB</option>
+                            <option value="EUR">EUR</option>
+                            <option value="FJD">FJD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="GEL">GEL</option>
+                            <option value="GHS">GHS</option>
+                            <option value="GMD">GMD</option>
+                            <option value="GNF">GNF</option>
+                            <option value="GTQ">GTQ</option>
+                            <option value="GYD">GYD</option>
+                            <option value="HNL">HNL</option>
+                            <option value="HTG">HTG</option>
+                            <option value="HUF">HUF</option>
+                            <option value="IDR">IDR</option>
+                            <option value="ILS">ILS</option>
+                            <option value="INR">INR</option>
+                            <option value="IQD">IQD</option>
+                            <option value="IRR">IRR</option>
+                            <option value="ISK">ISK</option>
+                            <option value="JMD">JMD</option>
+                            <option value="JOD">JOD</option>
+                            <option value="JPY">JPY</option>
+                            <option value="KES">KES</option>
+                            <option value="KGS">KGS</option>
+                            <option value="KHR">KHR</option>
+                            <option value="KMF">KMF</option>
+                            <option value="KPW">KPW</option>
+                            <option value="KRW">KRW</option>
+                            <option value="KWD">KWD</option>
+                            <option value="KZT">KZT</option>
+                            <option value="LAK">LAK</option>
+                            <option value="LBP">LBP</option>
+                            <option value="LKR">LKR</option>
+                            <option value="LRD">LRD</option>
+                            <option value="LSL">LSL</option>
+                            <option value="LYD">LYD</option>
+                            <option value="MAD">MAD</option>
+                            <option value="MDL">MDL</option>
+                            <option value="MGA">MGA</option>
+                            <option value="MKD">MKD</option>
+                            <option value="MMK">MMK</option>
+                            <option value="MNT">MNT</option>
+                            <option value="MRO">MRO</option>
+                            <option value="MUR">MUR</option>
+                            <option value="MVR">MVR</option>
+                            <option value="MWK">MWK</option>
+                            <option value="MXN">MXN</option>
+                            <option value="MYR">MYR</option>
+                            <option value="MZN">MZN</option>
+                            <option value="NAD">NAD</option>
+                            <option value="NGN">NGN</option>
+                            <option value="NIO">NIO</option>
+                            <option value="NOK">NOK</option>
+                            <option value="NPR">NPR</option>
+                            <option value="NZD">NZD</option>
+                            <option value="OMR">OMR</option>
+                            <option value="PAB">PAB</option>
+                            <option value="PEN">PEN</option>
+                            <option value="PGK">PGK</option>
+                            <option value="PHP">PHP</option>
+                            <option value="PKR">PKR</option>
+                            <option value="PLN">PLN</option>
+                            <option value="PYG">PYG</option>
+                            <option value="QAR">QAR</option>
+                            <option value="RON">RON</option>
+                            <option value="RSD">RSD</option>
+                            <option value="RUB">RUB</option>
+                            <option value="RWF">RWF</option>
+                            <option value="SAR">SAR</option>
+                            <option value="SBD">SBD</option>
+                            <option value="SCR">SCR</option>
+                            <option value="SDG">SDG</option>
+                            <option value="SEK">SEK</option>
+                            <option value="SGD">SGD</option>
+                            <option value="SLL">SLL</option>
+                            <option value="SOS">SOS</option>
+                            <option value="SRD">SRD</option>
+                            <option value="SSP">SSP</option>
+                            <option value="STD">STD</option>
+                            <option value="SYP">SYP</option>
+                            <option value="SZL">SZL</option>
+                            <option value="THB">THB</option>
+                            <option value="TJS">TJS</option>
+                            <option value="TMT">TMT</option>
+                            <option value="TND">TND</option>
+                            <option value="TOP">TOP</option>
+                            <option value="TRY">TRY</option>
+                            <option value="TTD">TTD</option>
+                            <option value="TWD">TWD</option>
+                            <option value="TZS">TZS</option>
+                            <option value="UAH">UAH</option>
+                            <option value="UGX">UGX</option>
+                            <option value="USD">USD</option>
+                            <option value="UYU">UYU</option>
+                            <option value="UZS">UZS</option>
+                            <option value="VEF">VEF</option>
+                            <option value="VND">VND</option>
+                            <option value="VUV">VUV</option>
+                            <option value="WST">WST</option>
+                            <option value="XAF">XAF</option>
+                            <option value="XCD">XCD</option>
+                            <option value="XOF">XOF</option>
+                            <option value="YER">YER</option>
+                            <option value="ZAR">ZAR</option>
+                            <option value="ZMW">ZMW</option>  
+                        </select>                      
+            </tr>
+            <tr>
+                <td>Afganistán</td>
+                <td>Afgani afgano</td>
+                <td>AFN</td>
+                <td class="exchange-rate" id="rate-afn">-</td>
+            </tr>
+            <tr>
+                <td>Albania</td>
+                <td>Lek albanés</td>
+                <td>ALL</td>
+                <td class="exchange-rate" id="rate-all">-</td>
+            </tr>
+            <tr>
+                <td>Alemania</td>
+                <td>Euro</td>
+                <td>AMD</td>
+                <td class="exchange-rate" id="rate-amd">-</td>
+            </tr>
+            <tr>
+                <td>Andorra</td>
+                <td>Euro</td>
+                <td>AOA</td>
+                <td class="exchange-rate" id="rate-aoa">-</td>
+            </tr>
+            <tr>
+                <td>Angola</td>
+                <td>Kwanza angoleño</td>
+                <td>ARS</td>
+                <td class="exchange-rate" id="rate-ars">-</td>
+            </tr>
+            <tr>
+                <td>Antigua y Barbuda</td>
+                <td>Dólar del Caribe Oriental</td>
+                <td>AUD</td>
+                <td class="exchange-rate" id="rate-aud">-</td>
+            </tr>
+            <tr>
+                <td>Arabia Saudita</td>
+                <td>Riyal saudí</td>
+                <td>AZN</td>
+                <td class="exchange-rate" id="rate-azn">-</td>
+            </tr>
+            <tr>
+                <td>Argelia</td>
+                <td>Dinar argelino</td>
+                <td>BAM</td>
+                <td class="exchange-rate" id="rate-bam">-</td>
+            </tr>
+            <tr>
+                <td>Argentina</td>
+                <td>Peso</td>
+                <td>BDT</td>
+                <td class="exchange-rate" id="rate-bdt">-</td>
+            </tr>
+            <tr>
+                <td>Armenia</td>
+                <td>Dram armenio</td>
+                <td>BGN</td>
+                <td class="exchange-rate" id="rate-bgn">-</td>
+            </tr>
+            <tr>
+                <td>Australia</td>
+                <td>Dólar australiano</td>
+                <td>BHD</td>
+                <td class="exchange-rate" id="rate-bhd">-</td>
+            </tr>
+            <tr>
+                <td>Austria</td>
+                <td>Euro</td>
+                <td>BIF</td>
+                <td class="exchange-rate" id="rate-bif">-</td>
+            </tr>
+            <tr>
+                <td>Azerbaiyán</td>
+                <td>Manat azerí</td>
+                <td>BND</td>
+                <td class="exchange-rate" id="rate-bnd">-</td>
+            </tr>
+            <tr>
+                <td>Bahamas</td>
+                <td>Dólar bahameño</td>
+                <td>BOB</td>
+                <td class="exchange-rate" id="rate-bob">-</td>
+            </tr>
+            <tr>
+                <td>Bangladés</td>
+                <td>Taka bangladeshí</td>
+                <td>BRL</td>
+                <td class="exchange-rate" id="rate-brl">-</td>
+            </tr>
+            <tr>
+                <td>Barbados</td>
+                <td>Dólar de Barbados</td>
+                <td>BSD</td>
+                <td class="exchange-rate" id="rate-bsd">-</td>
+            </tr>
+            <tr>
+                <td>Baréin</td>
+                <td>Dinar bahreiní</td>
+                <td>BTN</td>
+                <td class="exchange-rate" id="rate-btn">-</td>
+            </tr>
+            <tr>
+                <td>Bélgica</td>
+                <td>Euro</td>
+                <td>BWP</td>
+                <td class="exchange-rate" id="rate-bwp">-</td>
+            </tr>
+            <tr>
+                <td>Belice</td>
+                <td>Dólar beliceño</td>
+                <td>BYN</td>
+                <td class="exchange-rate" id="rate-byn">-</td>
+            </tr>
+            <tr>
+                <td>Benín</td>
+                <td>Franco CFA de África Occidental</td>
+                <td>BZD</td>
+                <td class="exchange-rate" id="rate-bzd">-</td>
+            </tr>
+            <tr>
+                <td>Bielorrusia</td>
+                <td>Rublo bielorruso</td>
+                <td>CAD</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Birmania</td>
+                <td>Kyat birmano</td>
+                <td>CDF</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Bolivia</td>
+                <td>Boliviano</td>
+                <td>CHF</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Bosnia-Herzegovina</td>
+                <td>Marco convertible</td>
+                <td>CLP</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Botsuana</td>
+                <td>Pula</td>
+                <td>CNY</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Brasil</td>
+                <td>Real brasileño</td>
+                <td>COP</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Brunéi</td>
+                <td>Dólar de Brunéi</td>
+                <td>CRC</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Bulgaria</td>
+                <td>Lev búlgaro</td>
+                <td>CUP</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Burkina Faso</td>
+                <td>Franco CFA de África Occidental</td>
+                <td>CVE</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Burundi</td>
+                <td>Franco de Burundi</td>
+                <td>CZK</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+            <tr>
+                <td>Bután</td>
+                <td>Ngultrum butanés</td>
+                <td>ISO</td>
+                <td class="exchange-rate">-</td>
+            </tr>
+                   
+                <tr>
+                    <td>Cabo Verde</td>
+                    <td>Escudo caboverdiano</td>
+                    <td>DJF</td>
+                    <td class="exchange-rate" id="rate-djf">-</td>
+                </tr>
+                <tr>
+                    <td>Camboya</td>
+                    <td>Riel camboyano</td>
+                    <td>DKK</td>
+                    <td class="exchange-rate" id="rate-dkk">-</td>
+                </tr>
+                <tr>
+                    <td>Camerún</td>
+                    <td>Franco CFA de África Central</td>
+                    <td>DOP</td>
+                    <td class="exchange-rate" id="rate-dop">-</td>
+                </tr>
+                <tr>
+                    <td>Canadá</td>
+                    <td>Dólar canadiense</td>
+                    <td>DZD</td>
+                    <td class="exchange-rate" id="rate-dzd">-</td>
+                </tr>
+                <tr>
+                    <td>Catar</td>
+                    <td>Riyal qatarí</td>
+                    <td>EGP</td>
+                    <td class="exchange-rate" id="rate-egp">-</td>
+                </tr>
+                <tr>
+                    <td>Chad</td>
+                    <td>Franco CFA de África Central</td>
+                    <td>ERN</td>
+                    <td class="exchange-rate" id="rate-ern">-</td>
+                </tr>
+                <tr>
+                    <td>Chile</td>
+                    <td>Peso chileno</td>
+                    <td>ETB</td>
+                    <td class="exchange-rate" id="rate-etb">-</td>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td>Yuan chino</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Chipre</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Colombia</td>
+                    <td>Peso colombiano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Comoras</td>
+                    <td>Franco comorano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Congo</td>
+                    <td>Franco CFA de África Central</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Corea del Norte</td>
+                    <td>Won norcoreano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Corea del Sur</td>
+                    <td>Won surcoreano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Costa de Marfil</td>
+                    <td>Franco CFA de África Occidental</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Costa Rica</td>
+                    <td>Colón costarricense</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Croacia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Cuba</td>
+                    <td>Peso cubano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Dinamarca</td>
+                    <td>Corona danesa</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Dominica</td>
+                    <td>Dólar del Caribe Oriental</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Ecuador</td>
+                    <td>Dólar estadounidense</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Egipto</td>
+                    <td>Libra egipcia</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>El Salvador</td>
+                    <td>Dólar estadounidense</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Emiratos Árabes Unidos</td>
+                    <td>Dirham de los Emiratos Árabes Unidos</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Eritrea</td>
+                    <td>Nakfa</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Eslovaquia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Eslovenia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>España</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Estados Unidos</td>
+                    <td>Dólar estadounidense</td>
+                    <td>USD</td>
+                    <td class="exchange-rate" id="rate-usd">-</td>
+                </tr>
+                <tr>
+                    <td>Estonia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Esuatini</td>
+                    <td>Lilangeni</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Etiopía</td>
+                    <td>Birr etíope</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Filipinas</td>
+                    <td>Peso filipino</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Finlandia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Fiyi</td>
+                    <td>Dólar fiyiano</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Francia</td>
+                    <td>Euro</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Gabón</td>
+                    <td>Franco CFA de África Central</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Gambia</td>
+                    <td>Dalasi</td>
+                    <td>EUR</td>
+                    <td class="exchange-rate" id="rate-eur">-</td>
+                </tr>
+                <tr>
+                    <td>Georgia</td>
+                    <td>Lari georgiano</td>
+                    <td>FJD</td>
+                    <td class="exchange-rate" id="rate-fjd">-</td>
+                </tr>
+                <tr>
+                    <td>Ghana</td>
+                    <td>Cedi</td>
+                    <td>GBP</td>
+                    <td class="exchange-rate" id="rate-gbp">-</td>
+                </tr>
+                <tr>
+                    <td>Granada</td>
+                    <td>Dólar del Caribe Oriental</td>
+                    <td>GEL</td>
+                    <td class="exchange-rate" id="rate-gel">-</td>
+                </tr>
+                <tr>
+                    <td>Grecia</td>
+                    <td>Euro</td>
+                    <td>GHS</td>
+                    <td class="exchange-rate" id="rate-ghs">-</td>
+                </tr>
+                <tr>
+                    <td>Guatemala</td>
+                    <td>Quetzal guatemalteco</td>
+                    <td>GMD</td>
+                    <td class="exchange-rate" id="rate-gmd">-</td>
+                </tr>
+                <tr>
+                    <td>Guinea</td>
+                    <td>Franco guineano</td>
+                    <td>GNF</td>
+                    <td class="exchange-rate" id="rate-gnf">-</td>
+                </tr>
+                <tr>
+                    <td>Guinea Ecuatorial</td>
+                    <td>Franco CFA de África Central</td>
+                    <td>GTQ</td>
+                    <td class="exchange-rate" id="rate-gtq">-</td>
+                </tr>
+                <tr>
+                    <td>Guinea-Bisáu</td>
+                    <td>Franco CFA de África Occidental</td>
+                    <td>GYD</td>
+                    <td class="exchange-rate" id="rate-gyd">-</td>
+                </tr>
+                <tr>
+                    <td>Guyana</td>
+                    <td>Dólar guyanés</td>
+                    <td>HNL</td>
+                    <td class="exchange-rate" id="rate-hnl">-</td>
+                </tr>
+                <tr>
+                    <td>Haití</td>
+                    <td>Gourde haitiano</td>
+                    <td>HTG</td>
+                    <td class="exchange-rate" id="rate-htg">-</td>
+                </tr>
+                <tr>
+                    <td>Honduras</td>
+                    <td>Lempira hondureño</td>
+                    <td>HUF</td>
+                    <td class="exchange-rate" id="rate-huf">-</td>
+                </tr>
+              
+                
+                        <td>Hungría</td>
+                        <td>Forinto húngaro</td>
+                        <td>IDR</td>
+                        <td class="exchange-rate" id="rate-idr">-</td>
+                    </tr>
+                    <tr>
+                        <td>India</td>
+                        <td>Rupia india</td>
+                        <td>ILS</td>
+                        <td class="exchange-rate" id="rate-ils">-</td>
+                    </tr>
+                    <tr>
+                        <td>Indonesia</td>
+                        <td>Rupia indonesia</td>
+                        <td>ILS</td>
+                        <td class="exchange-rate" id="rate-ils">-</td>
+                    </tr>
+                    <tr>
+                        <td>Irak</td>
+                        <td>Dinar iraquí</td>
+                        <td>INR</td>
+                        <td class="exchange-rate" id="rate-inr">-</td>
+                    </tr>
+                    <tr>
+                        <td>Irán</td>
+                        <td>Rial iraní</td>
+                        <td>IQD</td>
+                        <td class="exchange-rate" id="rate-iqd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Irlanda</td>
+                        <td>Euro</td>
+                        <td>IRR</td>
+                        <td class="exchange-rate" id="rate-irr">-</td>
+                    </tr>
+                    <tr>
+                        <td>Islandia</td>
+                        <td>Corona islandesa</td>
+                        <td>ISK</td>
+                        <td class="exchange-rate" id="rate-isk">-</td>
+                    </tr>
+                    <tr>
+                        <td>Islas Marshall</td>
+                        <td>Dólar estadounidense</td>
+                        <td>JMD</td>
+                        <td class="exchange-rate" id="rate-jmd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Islas Salomón</td>
+                        <td>Dólar de las Islas Salomón</td>
+                        <td>JOD</td>
+                        <td class="exchange-rate" id="rate-jod">-</td>
+                    </tr>
+                    <tr>
+                        <td>Israel</td>
+                        <td>Nuevo shéquel</td>
+                        <td>JPY</td>
+                        <td class="exchange-rate" id="rate-jpy">-</td>
+                    </tr>
+                    <tr>
+                        <td>Italia</td>
+                        <td>Euro</td>
+                        <td>KES</td>
+                        <td class="exchange-rate" id="rate-kes">-</td>
+                    </tr>
+                    <tr>
+                        <td>Jamaica</td>
+                        <td>Dólar jamaiquino</td>
+                        <td>KGS</td>
+                        <td class="exchange-rate" id="rate-kgs">-</td>
+                    </tr>
+                    <tr>
+                        <td>Japón</td>
+                        <td>Yen</td>
+                        <td>KHR</td>
+                        <td class="exchange-rate" id="rate-khr">-</td>
+                    </tr>
+                    <tr>
+                        <td>Jordania</td>
+                        <td>Dinar jordano</td>
+                        <td>KMF</td>
+                        <td class="exchange-rate" id="rate-kmf">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kazajistán</td>
+                        <td>Tenge kazajo</td>
+                        <td>KPW</td>
+                        <td class="exchange-rate" id="rate-kpw">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kenia</td>
+                        <td>Chelín keniano</td>
+                        <td>KRW</td>
+                        <td class="exchange-rate" id="rate-krw">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kirguistán</td>
+                        <td>Som kirguís</td>
+                        <td>KWD</td>
+                        <td class="exchange-rate" id="rate-kwd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kiribati</td>
+                        <td>Dólar australiano</td>
+                        <td>KZT</td>
+                        <td class="exchange-rate" id="rate-kzt">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kosovo</td>
+                        <td>Euro</td>
+                        <td>LAK</td>
+                        <td class="exchange-rate" id="rate-lak">-</td>
+                    </tr>
+                    <tr>
+                        <td>Kuwait</td>
+                        <td>Dinar kuwaití</td>
+                        <td>LBP</td>
+                        <td class="exchange-rate" id="rate-lbp">-</td>
+                    </tr>
+                    <tr>
+                        <td>Laos</td>
+                        <td>Kip laosiano</td>
+                        <td>LKR</td>
+                        <td class="exchange-rate" id="rate-lkr">-</td>
+                    </tr>
+                    <tr>
+                        <td>Lesoto</td>
+                        <td>Loti</td>
+                        <td>LRD</td>
+                        <td class="exchange-rate" id="rate-lrd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Letonia</td>
+                        <td>Euro</td>
+                        <td>LSL</td>
+                        <td class="exchange-rate" id="rate-lsl">-</td>
+                    </tr>
+                    <tr>
+                        <td>Líbano</td>
+                        <td>Libra libanesa</td>
+                        <td>LYD</td>
+                        <td class="exchange-rate" id="rate-lyd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Liberia</td>
+                        <td>Dólar liberiano</td>
+                        <td>MAD</td>
+                        <td class="exchange-rate" id="rate-mad">-</td>
+                    </tr>
+                    <tr>
+                        <td>Libia</td>
+                        <td>Dinar libio</td>
+                        <td>MDL</td>
+                        <td class="exchange-rate" id="rate-mdl">-</td>
+                    </tr>
+                    <tr>
+                        <td>Liechtenstein</td>
+                        <td>Franco suizo</td>
+                        <td>MGA</td>
+                        <td class="exchange-rate" id="rate-mga">-</td>
+                    </tr>
+                    <tr>
+                        <td>Lituania</td>
+                        <td>Euro</td>
+                        <td>MKD</td>
+                        <td class="exchange-rate" id="rate-mkd">-</td>
+                    </tr>
+                    <tr>
+                        <td>Luxemburgo</td>
+                        <td>Euro</td>
+                        <td>MMK</td>
+                        <td class="exchange-rate" id="rate-mmk">-</td>
+                    </tr>
+                    <tr>
+                        <td>Macedonia del Norte</td>
+                        <td>Denar macedonio</td>
+                        <td>MNT</td>
+                        <td class="exchange-rate" id="rate-mnt">-</td>
+                    </tr>
+                    <tr>
+                        <td>Madagascar</td>
+                        <td>Ariary malgache</td>
+                        <td>MRO</td>
+                        <td class="exchange-rate" id="rate-mro">-</td>
+                    </tr>
+                    <tr>
+                        <td>Malasia</td>
+                        <td>Ringgit malayo</td>
+                        <td>MUR</td>
+                        <td class="exchange-rate" id="rate-mur">-</td>
+                    </tr>
+                    <tr>
+                        <td>Malaui</td>
+                        <td>Kwacha malauí</td>
+                        <td>MVR</td>
+                        <td class="exchange-rate" id="rate-mvr">-</td>
+                    </tr>
+                    <tr>
+                        <td>Maldivas</td>
+                        <td>Rupia de Maldivas</td>
+                        <td>MWK</td>
+                        <td class="exchange-rate" id="rate-mwk">-</td>
+                    </tr>
+                   ¡
+                        ¡
+                        <tr>
+                            <td>Malí</td>
+                            <td>Franco CFA de África Occidental</td>
+                            <td>MXN</td>
+                            <td class="exchange-rate" id="rate-mxn">-</td>
+                        </tr>
+                        <tr>
+                            <td>Malta</td>
+                            <td>Euro</td>
+                            <td>MYR</td>
+                            <td class="exchange-rate" id="rate-myr">-</td>
+                        </tr>
+                        <tr>
+                            <td>Marruecos</td>
+                            <td>Dirham marroquí</td>
+                            <td>MZN</td>
+                            <td class="exchange-rate" id="rate-mzn">-</td>
+                        </tr>
+                        <tr>
+                            <td>Mauricio</td>
+                            <td>Rupia de Mauricio</td>
+                            <td>NAD</td>
+                            <td class="exchange-rate" id="rate-nad">-</td>
+                        </tr>
+                        <tr>
+                            <td>Mauritania</td>
+                            <td>Uguiya</td>
+                            <td>NGN</td>
+                            <td class="exchange-rate" id="rate-ngn">-</td>
+                        </tr>
+                        <tr>
+                            <td>México</td>
+                            <td>Peso mexicano</td>
+                            <td>NIO</td>
+                            <td class="exchange-rate" id="rate-nio">-</td>
+                        </tr>
+                        <tr>
+                            <td>Micronesia</td>
+                            <td>Dólar estadounidense</td>
+                            <td>NOK</td>
+                            <td class="exchange-rate" id="rate-nok">-</td>
+                        </tr>
+                        <tr>
+                            <td>Moldavia</td>
+                            <td>Leu moldavo</td>
+                            <td>NPR</td>
+                            <td class="exchange-rate" id="rate-npr">-</td>
+                        </tr>
+                        <tr>
+                            <td>Mónaco</td>
+                            <td>Euro</td>
+                            <td>NZD</td>
+                            <td class="exchange-rate" id="rate-nzd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Mongolia</td>
+                            <td>Tugrik mongol</td>
+                            <td>OMR</td>
+                            <td class="exchange-rate" id="rate-omr">-</td>
+                        </tr>
+                        <tr>
+                            <td>Montenegro</td>
+                            <td>Euro</td>
+                            <td>PAB</td>
+                            <td class="exchange-rate" id="rate-pab">-</td>
+                        </tr>
+                        <tr>
+                            <td>Mozambique</td>
+                            <td>Metical mozambiqueño</td>
+                            <td>PEN</td>
+                            <td class="exchange-rate" id="rate-pen">-</td>
+                        </tr>
+                        <tr>
+                            <td>Namibia</td>
+                            <td>Dólar namibio</td>
+                            <td>PGK</td>
+                            <td class="exchange-rate" id="rate-pgk">-</td>
+                        </tr>
+                        <tr>
+                            <td>Nauru</td>
+                            <td>Dólar australiano</td>
+                            <td>PHP</td>
+                            <td class="exchange-rate" id="rate-php">-</td>
+                        </tr>
+                        <tr>
+                            <td>Nepal</td>
+                            <td>Rupia nepalí</td>
+                            <td>PKR</td>
+                            <td class="exchange-rate" id="rate-pkr">-</td>
+                        </tr>
+                        <tr>
+                            <td>Nicaragua</td>
+                            <td>Córdoba nicaragüense</td>
+                            <td>PLN</td>
+                            <td class="exchange-rate" id="rate-pln">-</td>
+                        </tr>
+                        <tr>
+                            <td>Níger</td>
+                            <td>Franco CFA de África Occidental</td>
+                            <td>PYG</td>
+                            <td class="exchange-rate" id="rate-pyg">-</td>
+                        </tr>
+                        <tr>
+                            <td>Nigeria</td>
+                            <td>Naira</td>
+                            <td>QAR</td>
+                            <td class="exchange-rate" id="rate-qar">-</td>
+                        </tr>
+                        <tr>
+                            <td>Noruega</td>
+                            <td>Corona noruega</td>
+                            <td>RON</td>
+                            <td class="exchange-rate" id="rate-ron">-</td>
+                        </tr>
+                        <tr>
+                            <td>Nueva Zelanda</td>
+                            <td>Dólar neozelandés</td>
+                            <td>RSD</td>
+                            <td class="exchange-rate" id="rate-rsd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Omán</td>
+                            <td>Rial omaní</td>
+                            <td>RUB</td>
+                            <td class="exchange-rate" id="rate-rub">-</td>
+                        </tr>
+                        <tr>
+                            <td>Países Bajos</td>
+                            <td>Euro</td>
+                            <td>RWF</td>
+                            <td class="exchange-rate" id="rate-rwf">-</td>
+                        </tr>
+                        <tr>
+                            <td>Pakistán</td>
+                            <td>Rupia pakistaní</td>
+                            <td>SAR</td>
+                            <td class="exchange-rate" id="rate-sar">-</td>
+                        </tr>
+                        <tr>
+                            <td>Palaos</td>
+                            <td>Dólar estadounidense</td>
+                            <td>SBD</td>
+                            <td class="exchange-rate" id="rate-sbd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Palestina</td>
+                            <td>Nuevo shéquel</td>
+                            <td>SCR</td>
+                            <td class="exchange-rate" id="rate-scr">-</td>
+                        </tr>
+                        <tr>
+                            <td>Panamá</td>
+                            <td>Balboa panameño</td>
+                            <td>SDG</td>
+                            <td class="exchange-rate" id="rate-sdg">-</td>
+                        </tr>
+                        <tr>
+                            <td>Papúa Nueva Guinea</td>
+                            <td>Kina</td>
+                            <td>SEK</td>
+                            <td class="exchange-rate" id="rate-sek">-</td>
+                        </tr>
+                        <tr>
+                            <td>Paraguay</td>
+                            <td>Guaraní</td>
+                            <td>SGD</td>
+                            <td class="exchange-rate" id="rate-sgd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Perú</td>
+                            <td>Nuevo sol</td>
+                            <td>SLL</td>
+                            <td class="exchange-rate" id="rate-sll">-</td>
+                        </tr>
+                        <tr>
+                            <td>Polonia</td>
+                            <td>Zloty</td>
+                            <td>SOS</td>
+                            <td class="exchange-rate" id="rate-sos">-</td>
+                        </tr>
+                        <tr>
+                            <td>Portugal</td>
+                            <td>Euro</td>
+                            <td>SRD</td>
+                            <td class="exchange-rate" id="rate-srd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Reino Unido</td>
+                            <td>Libra británica</td>
+                            <td>SSP</td>
+                            <td class="exchange-rate" id="rate-ssp">-</td>
+                        </tr>
+                        <tr>
+                            <td>República Centroafricana</td>
+                            <td>Franco CFA de África Central</td>
+                            <td>STD</td>
+                            <td class="exchange-rate" id="rate-std">-</td>
+                        </tr>
+                        <tr>
+                            <td>República Checa</td>
+                            <td>Corona checa</td>
+                            <td>SYP</td>
+                            <td class="exchange-rate" id="rate-syp">-</td>
+                        </tr>
+                        <tr>
+                            <td>República Democrática del Congo</td>
+                            <td>Franco congoleño</td>
+                            <td>SZL</td>
+                            <td class="exchange-rate" id="rate-szl">-</td>
+                        </tr>
+                        <tr>
+                            <td>República Dominicana</td>
+                            <td>Peso dominicano</td>
+                            <td>THB</td>
+                            <td class="exchange-rate" id="rate-thb">-</td>
+                        </tr>
+                        <tr>
+                            <td>Ruanda</td>
+                            <td>Franco ruandés</td>
+                            <td>TJS</td>
+                            <td class="exchange-rate" id="rate-tjs">-</td>
+                        </tr>
+                        <tr>
+                            <td>Rumania</td>
+                            <td>Leu rumano</td>
+                            <td>TMT</td>
+                            <td class="exchange-rate" id="rate-tmt">-</td>
+                        </tr>
+                        <tr>
+                            <td>Rusia</td>
+                            <td>Rublo ruso</td>
+                            <td>TND</td>
+                            <td class="exchange-rate" id="rate-tnd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Samoa</td>
+                            <td>Tala</td>
+                            <td>TOP</td>
+                            <td class="exchange-rate" id="rate-top">-</td>
+                        </tr>
+                        <tr>
+                            <td>San Cristóbal y Nieves</td>
+                            <td>Dólar del Caribe Oriental</td>
+                            <td>TRY</td>
+                            <td class="exchange-rate" id="rate-try">-</td>
+                        </tr>
+                        <tr>
+                            <td>San Marino</td>
+                            <td>Euro</td>
+                            <td>TTD</td>
+                            <td class="exchange-rate" id="rate-ttd">-</td>
+                        </tr>
+                        <tr>
+                            <td>San Vicente y las Granadinas</td>
+                            <td>Dólar del Caribe Oriental</td>
+                            <td>TWD</td>
+                            <td class="exchange-rate" id="rate-twd">-</td>
+                        </tr>
+                        <tr>
+                            <td>Santa Lucía</td>
+                            <td>Dólar del Caribe Oriental</td>
+                            <td>TZS</td>
+                            <td class="exchange-rate" id="rate-tzs">-</td>
+                        </tr>
+                        <tr>
+                            <td>Santo Tomé y Príncipe</td>
+                            <td>Dobra</td>
+                            <td>UAH</td>
+                            <td class="exchange-rate" id="rate-uah">-</td>
+                        </tr>
+                        <tr>
+                            <td>Senegal</td>
+                            <td>Franco CFA de África Occidental</td>
+                            <td>UGX</td>
+                            <td class="exchange-rate" id="rate-ugx">-</td>
+                        </tr>
+                        <tr>
+                            <td>Serbia</td>
+                            <td>Dinar serbio</td>
+                            <td>USD</td>
+                            <td class="exchange-rate" id="rate-usd">-</td>
+                        </tr>
+                      
+                            <tr>
+                                <td>Seychelles</td>
+                                <td>Rupia de Seychelles</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Sierra Leona</td>
+                                <td>Leone</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Singapur</td>
+                                <td>Dólar de Singapur</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Siria</td>
+                                <td>Libra siria</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Somalia</td>
+                                <td>Chelín somalí</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Sri Lanka</td>
+                                <td>Rupia de Sri Lanka</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Sudáfrica</td>
+                                <td>Rand sudafricano</td>
+                                <td>USD</td>
+                                <td class="exchange-rate" id="rate-usd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Sudán</td>
+                                <td>Libra sudanesa</td>
+                                <td>UYU</td>
+                                <td class="exchange-rate" id="rate-uyu">-</td>
+                            </tr>
+                            <tr>
+                                <td>Sudán del Sur</td>
+                                <td>Libra sursudanesa</td>
+                                <td>UZS</td>
+                                <td class="exchange-rate" id="rate-uzs">-</td>
+                            </tr>
+                            <tr>
+                                <td>Suecia</td>
+                                <td>Corona sueca</td>
+                                <td>VEF</td>
+                                <td class="exchange-rate" id="rate-vef">-</td>
+                            </tr>
+                            <tr>
+                                <td>Suiza</td>
+                                <td>Franco suizo</td>
+                                <td>VND</td>
+                                <td class="exchange-rate" id="rate-vnd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Surinam</td>
+                                <td>Dólar surinamés</td>
+                                <td>VUV</td>
+                                <td class="exchange-rate" id="rate-vuv">-</td>
+                            </tr>
+                            <tr>
+                                <td>Tailandia</td>
+                                <td>Baht tailandés</td>
+                                <td>WST</td>
+                                <td class="exchange-rate" id="rate-wst">-</td>
+                            </tr>
+                            <tr>
+                                <td>Taiwán</td>
+                                <td>Nuevo dólar taiwanés</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Tanzania</td>
+                                <td>Chelín tanzano</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Tayikistán</td>
+                                <td>Somoni tayiko</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Timor Oriental</td>
+                                <td>Dólar estadounidense</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Togo</td>
+                                <td>Franco CFA de África Occidental</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Tonga</td>
+                                <td>Pa'anga</td>
+                                <td>XAF</td>
+                                <td class="exchange-rate" id="rate-xaf">-</td>
+                            </tr>
+                            <tr>
+                                <td>Trinidad y Tobago</td>
+                                <td>Dólar trinitense</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Túnez</td>
+                                <td>Dinar tunecino</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Turkmenistán</td>
+                                <td>Manat turcomano</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Turquía</td>
+                                <td>Lira turca</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Tuvalu</td>
+                                <td>Dólar australiano</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Ucrania</td>
+                                <td>Grivna</td>
+                                <td>XCD</td>
+                                <td class="exchange-rate" id="rate-xcd">-</td>
+                            </tr>
+                            <tr>
+                                <td>Uganda</td>
+                                <td>Chelín ugandés</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Uruguay</td>
+                                <td>Peso uruguayo</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Uzbekistán</td>
+                                <td>Som uzbeko</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Vanuatu</td>
+                                <td>Vatu</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Vaticano</td>
+                                <td>Euro</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Venezuela</td>
+                                <td>Bolívar fuerte</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Vietnam</td>
+                                <td>Dong vietnamita</td>
+                                <td>XOF</td>
+                                <td class="exchange-rate" id="rate-xof">-</td>
+                            </tr>
+                            <tr>
+                                <td>Yemen</td>
+                                <td>Rial yemení</td>
+                                <td>YER</td>
+                                <td class="exchange-rate" id="rate-yer">-</td>
+                            </tr>
+                            <tr>
+                                <td>Yibuti</td>
+                                <td>Franco yibutiano</td>
+                                <td>ZAR</td>
+                                <td class="exchange-rate" id="rate-zar">-</td>
+                            </tr>
+                            <tr>
+                                <td>Zambia</td>
+                                <td>Kwacha zambiano</td>
+                                <td>ZMW</td>
+                                <td class="exchange-rate" id="rate-zmw">-</td>
+                            </tr>
+                            <tr>
+                                <td>Zimbabue</td>
+                                <td>Dólar estadounidense</td>
+                                <td>ZMW</td>
+                                <td class="exchange-rate" id="rate-zmw">-</td>
+                            </tr>
+                        </table>
+                        
+                        <!-- Continúa con el resto de países... -->
+                    </table>
+                    
+                </table>
+                
+            </table>
+            
+            <!-- Continúa con el resto de los países de la lista -->
+        </table>
+        
+    <!-- Agrega más filas según sea necesario -->
+</tbody>
+            </table>
+        </div>
+    </div>
+        <!-- Contenedor de estadísticas -->
+        <div class="stats-container">
+            <h2>Estadísticas</h2>
+            <div class="stat-item">Visitantes: <span id="visitorCount">123</span></div>
+            <div class="stat-item">Operaciones realizadas: <span id="operationCount">456</span></div>
+            <div class="stat-item">Importe total de operaciones: <span id="totalAmount">€7890</span></div>
+            <div class="stat-item">Última operación: <span id="lastOperation">04/11/2024 14:30</span></div>
+
+            
+
+            <!-- Formulario de login -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="correo">Correo (Usuario)</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" required>
+                </div>
+                <div style="text-align: center;">
+                    <nav>
+                        <a href="operaciones.html" class="login-button">Iniciar Sesión</a>
+                    </nav>
+                    </button>
+                    <button type="button" class="button" style="background-color: blue; color: white; padding: 10px 20px; border: none; cursor: pointer;" onclick="window.location.href='registro.html'">
+                        Registrarse
+                    </button>
+                </div>
+            </form>
+
+            <!-- Tabla de operaciones -->
+            <h2>Historial de Operaciones</h2>
+            <table id="historialOperaciones" border="1">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Moneda Origen</th>
+                        <th>Importe Origen</th>
+                        <th>Moneda Cambio</th>
+                        <th>Importe Cambio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de operaciones se agregarán aquí -->
+                </tbody>
+            </table>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Obtener las operaciones del localStorage
+                    const operations = JSON.parse(localStorage.getItem('operations')) || [];
+
+                    // Obtener la tabla
+                    const table = document.getElementById('historialOperaciones').getElementsByTagName('tbody')[0];
+
+                    // Agregar cada operación a la tabla
+                    operations.forEach(operation => {
+                        const newRow = table.insertRow();
+
+                        const cell1 = newRow.insertCell(0);
+                        const cell2 = newRow.insertCell(1);
+                        const cell3 = newRow.insertCell(2);
+                        const cell4 = newRow.insertCell(3);
+                        const cell5 = newRow.insertCell(4);
+                        const cell6 = newRow.insertCell(5);
+
+                        cell1.innerHTML = operation.date;
+                        cell2.innerHTML = operation.time;
+                        cell3.innerHTML = operation.originCurrency;
+                        cell4.innerHTML = operation.originAmount;
+                        cell5.innerHTML = operation.targetCurrency;
+                        cell6.innerHTML = operation.targetAmount;
+                    });
+                });
+            </script>
+
+            <script>
+                function saveOperation(event) {
+                    event.preventDefault();
+                    const fecha = document.getElementById('fecha').value;
+                    const hora = document.getElementById('hora').value;
+                    const monedaOrigen = document.getElementById('monedaOrigen').value;
+                    const importeOrigen = document.getElementById('importeOrigen').value;
+                    const monedaCambio = document.getElementById('monedaCambio').value;
+                    const importeCambio = document.getElementById('importeCambio').value;
+
+                    const operation = {
+                        fecha,
+                        hora,
+                        monedaOrigen,
+                        importeOrigen,
+                        monedaCambio,
+                        importeCambio
+                    };
+
+                    const userEmail = localStorage.getItem('userEmail');
+                    if (userEmail) {
+                        let userOperations = JSON.parse(localStorage.getItem(userEmail)) || [];
+                        userOperations.push(operation);
+                        localStorage.setItem(userEmail, JSON.stringify(userOperations));
+                        alert('Operación guardada exitosamente');
+                        window.location.reload(); // Recargar la página para reflejar la nueva operación
+                    } else {
+                        alert('No se encontró el correo del usuario. Por favor, inicie sesión.');
+                    }
+                }
+            </script>
+
+            <script>
+                document.getElementById('operationForm').addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    // Obtener los valores del formulario
+                    const operationDate = document.getElementById('operationDate').value;
+                    const operationTime = document.getElementById('operationTime').value;
+                    const originCurrency = document.getElementById('originCurrency').value;
+                    const originAmount = document.getElementById('originAmount').value;
+                    const targetCurrency = document.getElementById('targetCurrency').value;
+                    const targetAmount = document.getElementById('targetAmount').value;
+
+                    // Crear una nueva operación
+                    const newOperation = {
+                        date: operationDate,
+                        time: operationTime,
+                        originCurrency: originCurrency,
+                        originAmount: originAmount,
+                        targetCurrency: targetCurrency,
+                        targetAmount: targetAmount
+                    };
+
+                    // Obtener las operaciones existentes del localStorage
+                    let operations = JSON.parse(localStorage.getItem('operations')) || [];
+
+                    // Agregar la nueva operación al inicio del array
+                    operations.unshift(newOperation);
+
+                    // Guardar las operaciones actualizadas en el localStorage
+                    localStorage.setItem('operations', JSON.stringify(operations));
+
+                    // Limpiar el formulario
+                    document.getElementById('operationForm').reset();
+                });
+            </script>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://v6.exchangerate-api.com/v6/8b8be35513859ae914e20a66/latest/USD';
+        const visitorCount = localStorage.getItem('visitorCount') || 0;
+        const operationCount = localStorage.getItem('operationCount') || 0;
+        const totalAmount = localStorage.getItem('totalAmount') || 0;
+        const lastOperation = localStorage.getItem('lastOperation') || 'N/A';
+
+        document.getElementById('visitorCount').textContent = visitorCount;
+        document.getElementById('operationCount').textContent = operationCount;
+        document.getElementById('totalAmount').textContent = `€${parseFloat(totalAmount).toFixed(2)}`;
+        document.getElementById('lastOperation').textContent = lastOperation;
+    </script>
+    <script>
+        document.getElementById('currencySelect').addEventListener('change', function() {
+            const selectedCurrency = this.value;
+            fetchRates(selectedCurrency);
+        });
+
+        function fetchRates(currency) {
+            const apiKey = 'TU_API_KEY'; // Reemplaza con tu clave de API
+            const url = `https://api.exchangerate-api.com/v4/latest/${currency}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    updateRates(data.rates);
+                })
+                .catch(error => console.error('Error al obtener las tasas de cambio:', error));
+        }
+
+        function updateRates(rates) {
+            const currencies = [
+                'EUR', 'USD', 'AFN', 'ALL', 'AMD', 'AOA', 'ARS', 'AUD', 'AZN', 'BAM', 'BDT', 'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 'BSD', 'BTN', 'BWP', 'BYN', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CUP', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD', 'EGP', 'ERN', 'ETB', 'KPW', 'KRW', 'XOF', 'HRK', 'XCD', 'SZL', 'THB', 'TJS', 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH', 'UGX', 'UYU', 'UZS', 'VEF', 'VND', 'VUV', 'WST', 'XAF', 'XPF', 'YER', 'ZAR', 'ZMW', 'PAB', 'PGK', 'PYG', 'PEN', 'PLN', 'GBP', 'RON', 'RUB', 'RWF', 'SCR', 'SDG', 'SEK', 'SGD', 'SLL', 'SOS', 'SRD', 'SSP', 'STD', 'SYP'
+            ];
+
+            currencies.forEach(currency => {
+                const element = document.getElementById(`rate-${currency.toLowerCase()}`);
+                if (element) {
+                    element.innerText = rates[currency] ? rates[currency].toFixed(2) : '-';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

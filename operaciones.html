@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión de Moneda</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color:#3498db ; /* Azul */
+            --hover-color: #3e8e41;
+            --text-color: white;
+            --background-hover-color: #f1f1f1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--background-hover-color);
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: var(--hover-color);
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Fondo blanco */
+            color: #000000; /* Texto negro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px;
+            padding: 0 20px;
+            flex: 1;
+        }
+        h2 {
+            color: #000000; /* Texto negro */
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #3498db; /* Bordes azules */
+            text-align: left;
+        }
+        th {
+            background-color:#3498db ; /* Fondo azul */
+            color: #ffffff; /* Texto blanco */
+        }
+        tr:nth-child(even) {
+            background-color: #f0f8ff; /* Fondo azul claro para filas pares */
+        }
+        .button {
+            background-color:#3498db ; /* Fondo azul */
+            color: #000000; /* Texto negro */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color:#3498db ; /* Fondo azul más claro al pasar el ratón */
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #000080; /* Bordes azules */
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .user-info {
+            background-color:#3498db ;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .user-info img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-row .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-row .form-group:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Mostrar información del usuario -->
+        <div id="userInfo" class="user-info">
+            <h2>Información del Usuario</h2>
+            <img id="userLogo" src="" alt="Logo del Usuario">
+            <p>Nombre: <span id="userFirstName">N/A</span></p>
+            <p>Apellido: <span id="userLastName">N/A</span></p>
+            <p>Empresa: <span id="userCompany">N/A</span></p>
+            <p>Correo: <span id="userEmailDisplay">N/A</span></p>
+        </div>
+
+        <h2>Registrar Operación</h2>
+        <form id="operationForm">
+            <div class="form-group">
+                <label for="operationDate">Fecha</label>
+                <input type="date" id="operationDate" name="operationDate" required>
+            </div>
+            <div class="form-group">
+                <label for="operationTime">Hora</label>
+                <input type="time" id="operationTime" name="operationTime" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="originCurrency">Moneda de Origen</label>
+                    <select id="originCurrency" name="originCurrency" required>
+                        <option value="USD">USD - Dólar Estadounidense</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="JPY">JPY - Yen Japonés</option>
+                        <option value="AFN">Afganistán - Afghani</option>
+                        <option value="ALL">Albania - Lek</option>
+                        <option value="AMD">Armenia - Dram</option>
+                        <option value="AOA">Angola - Kwanza</option>
+                        <option value="ARS">Argentina - Peso</option>
+                        <option value="AUD">Australia - Dólar Australiano</option>
+                        <option value="AZN">Azerbaiyán - Manat</option>
+                        <option value="BAM">Bosnia y Herzegovina - Marco Convertible</option>
+                        <option value="BBD">Barbados - Dólar</option>
+                        <option value="BDT">Bangladesh - Taka</option>
+                        <option value="BGN">Bulgaria - Lev</option>
+                        <option value="BHD">Baréin - Dinar</option>
+                        <option value="BIF">Burundi - Franco</option>
+                        <option value="BND">Brunéi - Dólar</option>
+                        <option value="BOB">Bolivia - Boliviano</option>
+                        <option value="BRL">Brasil - Real</option>
+                        <option value="BSD">Bahamas - Dólar</option>
+                        <option value="BTN">Bután - Ngultrum</option>
+                        <option value="BWP">Botsuana - Pula</option>
+                        <option value="BYN">Bielorrusia - Rublo</option>
+                        <option value="BZD">Belice - Dólar</option>
+                        <option value="CAD">Canadá - Dólar Canadiense</option>
+                        <option value="CDF">República Democrática del Congo - Franco</option>
+                        <option value="CHF">Suiza - Franco Suizo</option>
+                        <option value="CLP">Chile - Peso</option>
+                        <option value="CNY">China - Yuan</option>
+                        <option value="COP">Colombia - Peso</option>
+                        <option value="CRC">Costa Rica - Colón</option>
+                        <option value="CUP">Cuba - Peso</option>
+                        <option value="CVE">Cabo Verde - Escudo</option>
+                        <option value="CZK">República Checa - Corona</option>
+                        <option value="DJF">Yibuti - Franco</option>
+                        <option value="DKK">Dinamarca - Corona</option>
+                        <option value="DOP">República Dominicana - Peso</option>
+                        <option value="DZD">Argelia - Dinar</option>
+                        <option value="EGP">Egipto - Libra</option>
+                        <option value="ERN">Eritrea - Nakfa</option>
+                        <option value="ETB">Etiopía - Birr</option>
+                        <option value="FJD">Fiyi - Dólar</option>
+                        <option value="GBP">Reino Unido - Libra</option>
+                        <option value="GEL">Georgia - Lari</option>
+                        <option value="GHS">Ghana - Cedi</option>
+                        <option value="GMD">Gambia - Dalasi</option>
+                        <option value="GNF">Guinea - Franco</option>
+                        <option value="GTQ">Guatemala - Quetzal</option>
+                        <option value="GYD">Guyana - Dólar</option>
+                        <option value="HNL">Honduras - Lempira</option>
+                        <option value="HTG">Haití - Gourde</option>
+                        <option value="HUF">Hungría - Forint</option>
+                        <option value="IDR">Indonesia - Rupia</option>
+                        <option value="ILS">Israel - Nuevo Shekel</option>
+                        <option value="INR">India - Rupia</option>
+                        <option value="IQD">Irak - Dinar</option>
+                        <option value="IRR">Irán - Rial</option>
+                        <option value="ISK">Islandia - Corona</option>
+                        <option value="JMD">Jamaica - Dólar</option>
+                        <option value="JOD">Jordania - Dinar</option>
+                        <option value="JPY">Japón - Yen</option>
+                        <option value="KES">Kenia - Chelín</option>
+                        <option value="KGS">Kirguistán - Som</option>
+                        <option value="KHR">Camboya - Riel</option>
+                        <option value="KMF">Comoras - Franco</option>
+                        <option value="KPW">Corea del Norte - Won</option>
+                        <option value="KRW">Corea del Sur - Won</option>
+                        <option value="KWD">Kuwait - Dinar</option>
+                        <option value="KZT">Kazajistán - Tenge</option>
+                        <option value="LAK">Laos - Kip</option>
+                        <option value="LBP">Líbano - Libra</option>
+                        <option value="LKR">Sri Lanka - Rupia</option>
+                        <option value="LRD">Liberia - Dólar</option>
+                        <option value="LSL">Lesoto - Loti</option>
+                        <option value="LYD">Libia - Dinar</option>
+                        <option value="MAD">Marruecos - Dirham</option>
+                        <option value="MDL">Moldavia - Leu</option>
+                        <option value="MGA">Madagascar - Ariary</option>
+                        <option value="MKD">Macedonia - Denar</option>
+                        <option value="MMK">Birmania - Kyat</option>
+                        <option value="MNT">Mongolia - Tugrik</option>
+                        <option value="MRO">Mauritania - Ouguiya</option>
+                        <option value="MUR">Mauricio - Rupia</option>
+                        <option value="MVR">Maldivas - Rufiyaa</option>
+                        <option value="MWK">Malaui - Kwacha</option>
+                        <option value="MXN">México - Peso</option>
+                        <option value="MYR">Malasia - Ringgit</option>
+                        <option value="MZN">Mozambique - Metical</option>
+                        <option value="NAD">Namibia - Dólar</option>
+                        <option value="NGN">Nigeria - Naira</option>
+                        <option value="NIO">Nicaragua - Córdoba</option>
+                        <option value="NOK">Noruega - Corona</option>
+                        <option value="NPR">Nepal - Rupia</option>
+                        <option value="NZD">Nueva Zelanda - Dólar Neozelandés</option>
+                        <option value="OMR">Omán - Rial</option>
+                        <option value="PAB">Panamá - Balboa</option>
+                        <option value="PEN">Perú - Sol</option>
+                        <option value="PGK">Papúa Nueva Guinea - Kina</option>
+                        <option value="PHP">Filipinas - Peso</option>
+                        <option value="PKR">Pakistán - Rupia</option>
+                        <option value="PLN">Polonia - Zloty</option>
+                        <option value="PYG">Paraguay - Guaraní</option>
+                        <option value="QAR">Catar - Rial</option>
+                        <option value="RON">Rumania - Leu</option>
+                        <option value="RSD">Serbia - Dinar</option>
+                        <option value="RUB">Rusia - Rublo</option>
+                        <option value="RWF">Ruanda - Franco</option>
+                        <option value="SAR">Arabia Saudita - Riyal</option>
+                        <option value="SBD">Islas Salomón - Dólar</option>
+                        <option value="SCR">Seychelles - Rupia</option>
+                        <option value="SDG">Sudán - Libra</option>
+                        <option value="SEK">Suecia - Corona</option>
+                        <option value="SGD">Singapur - Dólar</option>
+                        <option value="SLL">Sierra Leona - Leone</option>
+                        <option value="SOS">Somalia - Chelín</option>
+                        <option value="SRD">Surinam - Dólar</option>
+                        <option value="SSP">Sudán del Sur - Libra</option>
+                        <option value="STD">Santo Tomé y Príncipe - Dobra</option>
+                        <option value="SYP">Siria - Libra</option>
+                        <option value="SZL">Suazilandia - Lilangeni</option>
+                        <option value="THB">Tailandia - Baht</option>
+                        <option value="TJS">Tayikistán - Somoni</option>
+                        <option value="TMT">Turkmenistán - Manat</option>
+                        <option value="TND">Túnez - Dinar</option>
+                        <option value="TOP">Tonga - Pa'anga</option>
+                        <option value="TRY">Turquía - Lira</option>
+                        <option value="TTD">Trinidad y Tobago - Dólar</option>
+                        <option value="TWD">Taiwán - Nuevo Dólar</option>
+                        <option value="TZS">Tanzania - Chelín</option>
+                        <option value="UAH">Ucrania - Grivna</option>
+                        <option value="UGX">Uganda - Chelín</option>
+                        <option value="UYU">Uruguay - Peso</option>
+                        <option value="UZS">Uzbekistán - Som</option>
+                        <option value="VEF">Venezuela - Bolívar</option>
+                        <option value="VND">Vietnam - Dong</option>
+                        <option value="VUV">Vanuatu - Vatu</option>
+                        <option value="WST">Samoa - Tala</option>
+                        <option value="XAF">África Central - Franco CFA</option>
+                        <option value="XCD">Caribe Oriental - Dólar</option>
+                        <option value="XOF">África Occidental - Franco CFA</option>
+                        <option value="YER">Yemen - Rial</option>
+                        <option value="ZAR">Sudáfrica - Rand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="originAmount">Importe</label>
+                    <input type="number" id="originAmount" name="originAmount" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="targetCurrency">Moneda de Cambio</label>
+                    <select id="targetCurrency" name="targetCurrency" required>
+                        <option value="USD">USD - Dólar Estadounidense</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="JPY">JPY - Yen Japonés</option>
+                        <option value="AFN">AFN - Afghani</option>
+                        <option value="ALL">ALL - Lek</option>
+                        <option value="AMD">AMD - Dram</option>
+                        <option value="AOA">AOA - Kwanza</option>
+                        <option value="ARS">ARS - Peso</option>
+                        <option value="AUD">AUD - Dólar Australiano</option>
+                        <option value="AZN">AZN - Manat</option>
+                        <option value="BAM">BAM - Marco Convertible</option>
+                        <option value="BBD">BBD - Dólar</option>
+                        <option value="BDT">BDT - Taka</option>
+                        <option value="BGN">BGN - Lev</option>
+                        <option value="BHD">BHD - Dinar</option>
+                        <option value="BIF">BIF - Franco</option>
+                        <option value="BND">BND - Dólar</option>
+                        <option value="BOB">BOB - Boliviano</option>
+                        <option value="BRL">BRL - Real</option>
+                        <option value="BSD">BSD - Dólar</option>
+                        <option value="BTN">BTN - Ngultrum</option>
+                        <option value="BWP">BWP - Pula</option>
+                        <option value="BYN">BYN - Rublo</option>
+                        <option value="BZD">BZD - Dólar</option>
+                        <option value="CAD">CAD - Dólar Canadiense</option>
+                        <option value="CDF">CDF - Franco</option>
+                        <option value="CHF">CHF - Franco Suizo</option>
+                        <option value="CLP">CLP - Peso</option>
+                        <option value="CNY">CNY - Yuan</option>
+                        <option value="COP">COP - Peso</option>
+                        <option value="CRC">CRC - Colón</option>
+                        <option value="CUP">CUP - Peso</option>
+                        <option value="CVE">CVE - Escudo</option>
+                        <option value="CZK">CZK - Corona</option>
+                        <option value="DJF">DJF - Franco</option>
+                        <option value="DKK">DKK - Corona</option>
+                        <option value="DOP">DOP - Peso</option>
+                        <option value="DZD">DZD - Dinar</option>
+                        <option value="EGP">EGP - Libra</option>
+                        <option value="ERN">ERN - Nakfa</option>
+                        <option value="ETB">ETB - Birr</option>
+                        <option value="FJD">FJD - Dólar</option>
+                        <option value="GBP">GBP - Libra</option>
+                        <option value="GEL">GEL - Lari</option>
+                        <option value="GHS">GHS - Cedi</option>
+                        <option value="GMD">GMD - Dalasi</option>
+                        <option value="GNF">GNF - Franco</option>
+                        <option value="GTQ">GTQ - Quetzal</option>
+                        <option value="GYD">GYD - Dólar</option>
+                        <option value="HNL">HNL - Lempira</option>
+                        <option value="HTG">HTG - Gourde</option>
+                        <option value="HUF">HUF - Forint</option>
+                        <option value="IDR">IDR - Rupia</option>
+                        <option value="ILS">ILS - Nuevo Shekel</option>
+                        <option value="INR">INR - Rupia</option>
+                        <option value="IQD">IQD - Dinar</option>
+                        <option value="IRR">IRR - Rial</option>
+                        <option value="ISK">ISK - Corona</option>
+                        <option value="JMD">JMD - Dólar</option>
+                        <option value="JOD">JOD - Dinar</option>
+                        <option value="JPY">JPY - Yen</option>
+                        <option value="KES">KES - Chelín</option>
+                        <option value="KGS">KGS - Som</option>
+                        <option value="KHR">KHR - Riel</option>
+                        <option value="KMF">KMF - Franco</option>
+                        <option value="KPW">KPW - Won</option>
+                        <option value="KRW">KRW - Won</option>
+                        <option value="KWD">KWD - Dinar</option>
+                        <option value="KZT">KZT - Tenge</option>
+                        <option value="LAK">LAK - Kip</option>
+                        <option value="LBP">LBP - Libra</option>
+                        <option value="LKR">LKR - Rupia</option>
+                        <option value="LRD">LRD - Dólar</option>
+                        <option value="LSL">LSL - Loti</option>
+                        <option value="LYD">LYD - Dinar</option>
+                        <option value="MAD">MAD - Dirham</option>
+                        <option value="MDL">MDL - Leu</option>
+                        <option value="MGA">MGA - Ariary</option>
+                        <option value="MKD">MKD - Denar</option>
+                        <option value="MMK">MMK - Kyat</option>
+                        <option value="MNT">MNT - Tugrik</option>
+                        <option value="MRO">MRO - Ouguiya</option>
+                        <option value="MUR">MUR - Rupia</option>
+                        <option value="MVR">MVR - Rufiyaa</option>
+                        <option value="MWK">MWK - Kwacha</option>
+                        <option value="MXN">MXN - Peso</option>
+                        <option value="MYR">MYR - Ringgit</option>
+                        <option value="MZN">MZN - Metical</option>
+                        <option value="NAD">NAD - Dólar</option>
+                        <option value="NGN">NGN - Naira</option>
+                        <option value="NIO">NIO - Córdoba</option>
+                        <option value="NOK">NOK - Corona</option>
+                        <option value="NPR">NPR - Rupia</option>
+                        <option value="NZD">NZD - Dólar Neozelandés</option>
+                        <option value="OMR">OMR - Rial</option>
+                        <option value="PAB">PAB - Balboa</option>
+                        <option value="PEN">PEN - Sol</option>
+                        <option value="PGK">PGK - Kina</option>
+                        <option value="PHP">PHP - Peso</option>
+                        <option value="PKR">PKR - Rupia</option>
+                        <option value="PLN">PLN - Zloty</option>
+                        <option value="PYG">PYG - Guaraní</option>
+                        <option value="QAR">QAR - Rial</option>
+                        <option value="RON">RON - Leu</option>
+                        <option value="RSD">RSD - Dinar</option>
+                        <option value="RUB">RUB - Rublo</option>
+                        <option value="RWF">RWF - Franco</option>
+                        <option value="SAR">SAR - Riyal</option>
+                        <option value="SBD">SBD - Dólar</option>
+                        <option value="SCR">SCR - Rupia</option>
+                        <option value="SDG">SDG - Libra</option>
+                        <option value="SEK">SEK - Corona</option>
+                        <option value="SGD">SGD - Dólar</option>
+                        <option value="SLL">SLL - Leone</option>
+                        <option value="SOS">SOS - Chelín</option>
+                        <option value="SRD">SRD - Dólar</option>
+                        <option value="SSP">SSP - Libra</option>
+                        <option value="STD">STD - Dobra</option>
+                        <option value="SYP">SYP - Libra</option>
+                        <option value="SZL">SZL - Lilangeni</option>
+                        <option value="THB">THB - Baht</option>
+                        <option value="TJS">TJS - Somoni</option>
+                        <option value="TMT">TMT - Manat</option>
+                        <option value="TND">TND - Dinar</option>
+                        <option value="TOP">TOP - Pa'anga</option>
+                        <option value="TRY">TRY - Lira</option>
+                        <option value="TTD">TTD - Dólar</option>
+                        <option value="TWD">TWD - Nuevo Dólar</option>
+                        <option value="TZS">TZS - Chelín</option>
+                        <option value="UAH">UAH - Grivna</option>
+                        <option value="UGX">UGX - Chelín</option>
+                        <option value="UYU">UYU - Peso</option>
+                        <option value="UZS">UZS - Som</option>
+                        <option value="VEF">VEF - Bolívar</option>
+                        <option value="VND">VND - Dong</option>
+                        <option value="VUV">VUV - Vatu</option>
+                        <option value="WST">WST - Tala</option>
+                        <option value="XAF">XAF - Franco CFA</option>
+                        <option value="XCD">XCD - Dólar</option>
+                        <option value="XOF">XOF - Franco CFA</option>
+                        <option value="YER">YER - Rial</option>
+                        <option value="ZAR">ZAR - Rand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="targetAmount">Importe</label>
+                    <input type="number" id="targetAmount" name="targetAmount" readonly>
+                </div>
+            </div>
+            <button type="submit" class="button" style="margin-top: 20px;">Registrar Operación</button>
+            <button onclick="window.location.href='index.html'" class="button" style="margin-top: 20px;">Volver a la Página Principal</button>
+        </form>
+
+        <h2>Historial de Operaciones</h2>
+        <table id="historialOperaciones" border="1">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Moneda de Origen</th>
+                    <th>Importe de Origen</th>
+                    <th>Moneda de Cambio</th>
+                    <th>Importe de Cambio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las operaciones se añadirán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function agregarOperacion(fecha, hora, monedaOrigen, importeOrigen, monedaCambio, importeCambio) {
+            const tabla = document.getElementById('historialOperaciones').getElementsByTagName('tbody')[0];
+            const nuevaFila = tabla.insertRow(0); // Insertar al principio
+
+            nuevaFila.innerHTML = `
+                <td>${fecha}</td>
+                <td>${hora}</td>
+                <td>${monedaOrigen}</td>
+                <td>${importeOrigen}</td>
+                <td>${monedaCambio}</td>
+                <td>${importeCambio}</td>
+            `;
+        }
+
+        // Ejemplo de uso:
+        agregarOperacion('2023-10-01', '12:00', 'USD', '100', 'EUR', '90');
+
+        // Mostrar información del usuario
+        window.onload = function() {
+            const userFirstName = localStorage.getItem('userFirstName');
+            const userLastName = localStorage.getItem('userLastName');
+            const userCompany = localStorage.getItem('userCompany');
+            const userEmail = localStorage.getItem('userEmail');
+            const userLogo = localStorage.getItem('userLogo');
+            const isAdmin = userEmail === 'admin@example.com'; // Reemplaza con el correo del administrador
+
+            // Asignar un número único a los usuarios que ya están registrados
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.includes('@')) { // Asumiendo que las claves de los usuarios son sus correos electrónicos
+                    let user = JSON.parse(localStorage.getItem(key));
+                    if (!user.id) {
+                        user.id = Date.now() + i; // Asignar un ID único
+                        localStorage.setItem(key, JSON.stringify(user));
+                    }
+                }
+            }
+
+            if (userFirstName && userLastName && userCompany && userEmail && userLogo) {
+                document.getElementById('userFirstName').textContent = userFirstName;
+                document.getElementById('userLastName').textContent = userLastName;
+                document.getElementById('userCompany').textContent = userCompany;
+                document.getElementById('userEmailDisplay').textContent = userEmail;
+                document.getElementById('userLogo').src = userLogo;
+
+                const tbody = document.querySelector('#historialOperaciones tbody');
+                if (isAdmin) {
+                    // Mostrar todas las operaciones
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key.endsWith('_operations')) {
+                            const operations = JSON.parse(localStorage.getItem(key)) || [];
+                            operations.forEach(op => {
+                                const newRow = document.createElement('tr');
+                                newRow.innerHTML = `
+                                    <td>${op.date}</td>
+                                    <td>${op.time}</td>
+                                    <td>${op.originCurrency}</td>
+                                    <td>${op.originAmount}</td>
+                                    <td>${op.targetCurrency}</td>
+                                    <td>${op.targetAmount}</td>
+                                `;
+                                tbody.appendChild(newRow);
+                            });
+                        }
+                    }
+                } else {
+                    // Mostrar solo las operaciones del usuario actual
+                    const operations = JSON.parse(localStorage.getItem(userEmail + '_operations')) || [];
+                    operations.forEach(op => {
+                        const newRow = document.createElement('tr');
+                        newRow.innerHTML = `
+                            <td>${op.date}</td>
+                            <td>${op.time}</td>
+                            <td>${op.originCurrency}</td>
+                            <td>${op.originAmount}</td>
+                            <td>${op.targetCurrency}</td>
+                            <td>${op.targetAmount}</td>
+                        `;
+                        tbody.appendChild(newRow);
+                    });
+                }
+            } else {
+                alert('No se encontraron datos del usuario. Por favor, regístrese primero.');
+            }
+
+            const operations = JSON.parse(localStorage.getItem('operations')) || [];
+            const tbody = document.querySelector('#historialOperaciones tbody');
+            operations.forEach(op => {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${op.date}</td>
+                    <td>${op.time}</td>
+                    <td>${op.originCurrency}</td>
+                    <td>${op.originAmount}</td>
+                    <td>${op.targetCurrency}</td>
+                    <td>${op.targetAmount}</td>
+                `;
+                tbody.appendChild(newRow);
+            });
+
+            // Establecer fecha y hora actuales
+            const now = new Date();
+            const date = now.toISOString().split('T')[0];
+            const time = now.toTimeString().split(' ')[0].slice(0, 5);
+            document.getElementById('operationDate').value = date;
+            document.getElementById('operationTime').value = time;
+        };
+
+        document.getElementById('operationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('operationDate').value;
+            const time = document.getElementById('operationTime').value;
+            const originCurrency = document.getElementById('originCurrency').value;
+            const originAmount = document.getElementById('originAmount').value;
+            const targetCurrency = document.getElementById('targetCurrency').value;
+
+            fetch(`https://v6.exchangerate-api.com/v6/8b8be35513859ae914e20a66/latest/${originCurrency}`)
+                .then(response => response.json())
+                .then(data => {
+                    const rate = data.conversion_rates[targetCurrency];
+                    const targetAmount = (originAmount * rate).toFixed(2);
+
+                    const operation = {
+                        date,
+                        time,
+                        originCurrency,
+                        originAmount,
+                        targetCurrency,
+                        targetAmount
+                    };
+                    const userEmail = localStorage.getItem('currentUser');
+                    if (userEmail) {
+                        let userOperations = JSON.parse(localStorage.getItem(userEmail + '_operations')) || [];
+                        userOperations.push(operation);
+                        localStorage.setItem(userEmail + '_operations', JSON.stringify(userOperations));
+
+                        const newRow = document.createElement('tr');
+                        newRow.innerHTML = `
+                            <td>${date}</td>
+                            <td>${time}</td>
+                            <td>${originCurrency}</td>
+                            <td>${originAmount}</td>
+                            <td>${targetCurrency}</td>
+                            <td>${targetAmount}</td>
+                        `;
+                        document.querySelector('#historialOperaciones tbody').appendChild(newRow);
+
+                        // Actualizar el campo de importe de cambio
+                        document.getElementById('targetAmount').value = targetAmount;
+                    } else {
+                        alert('No se encontró el correo del usuario. Por favor, inicie sesión.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener las tasas de cambio:', error);
+                    alert('Error al obtener las tasas de cambio. Por favor, inténtelo de nuevo más tarde.');
+                });
+        });
+    </script>
+    <script>
+        document.getElementById('operationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const operationDate = document.getElementById('operationDate').value;
+            const operationTime = document.getElementById('operationTime').value;
+            const originCurrency = document.getElementById('originCurrency').value;
+            const originAmount = document.getElementById('originAmount').value;
+
+            // Crear una nueva operación
+            const newOperation = {
+                date: operationDate,
+                time: operationTime,
+                currency: originCurrency,
+                amount: originAmount
+            };
+
+            // Obtener las operaciones existentes del localStorage
+            let operations = JSON.parse(localStorage.getItem('operations')) || [];
+
+            // Agregar la nueva operación al inicio del array
+            operations.unshift(newOperation);
+
+            // Guardar las operaciones actualizadas en el localStorage
+            localStorage.setItem('operations', JSON.stringify(operations));
+
+            // Limpiar el formulario
+            document.getElementById('operationForm').reset();
+        });
+    </script>
+</body>
+</html>

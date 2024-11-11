@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 0; /* Ajusta el padding del contenedor */
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            overflow: hidden; /* Evita que el contenido sobresalga */
+        }
+        .header-title {
+            background-color: #3498db;
+            color: #fff;
+            padding: 18px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-group {
+            padding: 0 20px; /* Agrega padding horizontal a cada grupo de formulario */
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: calc(100% - 40px); /* Ajusta el ancho con base en el padding */
+            margin: 0 20px 20px; /* Agrega margen para centrar dentro del contenedor */
+            box-sizing: border-box;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .link {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-title">Registro</div>
+        <form id="registerForm" onsubmit="registerUser(event)">
+            <div class="form-group">
+                <label for="registerFirstName">Nombre</label>
+                <input type="text" id="registerFirstName" name="registerFirstName" required>
+            </div>
+            <div class="form-group">
+                <label for="registerLastName">Apellido</label>
+                <input type="text" id="registerLastName" name="registerLastName" required>
+            </div>
+            <div class="form-group">
+                <label for="registerCompany">Empresa</label>
+                <input type="text" id="registerCompany" name="registerCompany" required>
+            </div>
+            <div class="form-group">
+                <label for="registerLogo">Foto o Logo (URL)</label>
+                <input type="text" id="registerLogo" name="registerLogo" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Correo</label>
+                <input type="email" id="registerEmail" name="registerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Contraseña</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+            </div>
+            <button type="submit" class="button registro">Registrarse</button>
+        </form>
+        <a href="index.html" class="link">Volver a la página principal</a>
+    </div>
+    <script>
+        function registerUser(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const firstName = document.getElementById('registerFirstName').value;
+            const lastName = document.getElementById('registerLastName').value;
+            const company = document.getElementById('registerCompany').value;
+            const logo = document.getElementById('registerLogo').value;
+
+            // Generar un ID único para el usuario
+            const userId = Date.now();
+            const user = {
+                id: userId,
+                firstName,
+                lastName,
+                company,
+                email,
+                logo
+            };
+            localStorage.setItem(email, JSON.stringify(user));
+            localStorage.setItem('currentUser', email);
+            alert(`Usuario registrado con éxito. Su número de usuario es: ${userId}`);
+            window.location.href = 'operaciones.html';
+        }
+    </script>
+</body>
+</html>
